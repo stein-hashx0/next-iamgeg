@@ -1,0 +1,4 @@
+This is a placeholder font file. In a production environment, you should replace
+this file with the actual StabilGrotesk-Bold.otf font. The contents of this
+file are not used at runtime but the file must exist so that Next.js can
+bundle and trace the font for the image generation API.

@@ -1,0 +1,23 @@
+{
+  "name": "next-image-api",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "satori": "latest",
+    "@resvg/resvg-js": "latest"
+  }
+  ,
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/react": "^18.2.0",
+    "@types/node": "^20.6.0"
+  }
+}
