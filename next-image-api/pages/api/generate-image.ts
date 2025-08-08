@@ -57,13 +57,13 @@ export default async function handler(
       process.cwd(),
       'public',
       'fonts',
-      'StabilGrotesk-Regular.otf',
+      'StabilGrotesk-regular.otf',
     )
     const boldFontPath = path.join(
       process.cwd(),
       'public',
       'fonts',
-      'StabilGrotesk-Bold.otf',
+      'StabilGrotesk-bold.otf',
     )
 
     // Read font files from the filesystem synchronously. Since this API runs
