@@ -23,6 +23,7 @@ export default async function handler(
     const heightParam = Array.isArray(query.height) ? query.height[0] : query.height
     const fontSizeParam = Array.isArray(query.fontSize) ? query.fontSize[0] : query.fontSize
     const linesParam = Array.isArray(query.lines) ? query.lines[0] : query.lines
+    const alignParam = Array.isArray(query.align) ? query.align[0] : query.align
 
     const thinText = typeof thinParam === 'string' ? thinParam : ''
     const blackText = typeof blackParam === 'string' ? blackParam : ''
@@ -30,6 +31,7 @@ export default async function handler(
     const width = widthParam ? parseInt(String(widthParam), 10) : 1200
     const height = heightParam ? parseInt(String(heightParam), 10) : 630
     const fontSize = fontSizeParam ? parseInt(String(fontSizeParam), 10) : 64
+    const align = alignParam === 'left' ? 'flex-start' : 'center'
 
     // Load font files
     const thinFontPath = path.join(process.cwd(), 'public', 'fonts', 'StabilGrotesk-Thin.ttf')
@@ -55,7 +57,8 @@ export default async function handler(
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            alignItems: 'center',
+            alignItems: align,
+            ...(align === 'flex-start' ? { paddingLeft: 80 } : {}),
             width: '100%',
             height: '100%',
             backgroundColor: 'transparent',
@@ -70,7 +73,7 @@ export default async function handler(
                   style: {
                     display: 'flex',
                     flexDirection: 'row',
-                    justifyContent: 'center',
+                    justifyContent: align,
                     alignItems: 'baseline',
                   },
                 },
@@ -85,6 +88,7 @@ export default async function handler(
                         fontSize,
                         color,
                         whiteSpace: 'pre',
+                        textAlign: align === 'flex-start' ? 'left' : 'center',
                       },
                     },
                     span.text,
@@ -103,6 +107,7 @@ export default async function handler(
                     color,
                     fontSize,
                     whiteSpace: 'pre',
+                    textAlign: align === 'flex-start' ? 'left' : 'center',
                   },
                 },
                 thinText,
@@ -116,6 +121,7 @@ export default async function handler(
                     color,
                     fontSize,
                     whiteSpace: 'pre',
+                    textAlign: align === 'flex-start' ? 'left' : 'center',
                   },
                 },
                 blackText,
@@ -154,5 +160,6 @@ export default async function handler(
     res.status(500).json({ error: 'Failed to generate image' })
   }
 }
+
 
 
